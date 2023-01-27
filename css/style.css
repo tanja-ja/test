@@ -1,0 +1,458 @@
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins-Bold"), url("../fonts/Poppins-Bold.woff2") format("woff2"),
+    url("../fonts/Poppins-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: local("PoppinsSemiBold"),
+    url("../fonts/Poppins-SemiBold.woff2") format("woff2"),
+    url("../fonts/Poppins-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins-Medium"),
+    url("../fonts/Poppins-Medium.woff2") format("woff2"),
+    url("../fonts/Poppins-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Poppins";
+  src: local("Poppins-Regular"),
+    url("../fonts/Poppins-Regular.woff2") format("woff2"),
+    url("../fonts/Poppins-Regular.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+* *::before,
+*::after {
+  box-sizing: inherit;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+body {
+  min-width: 320px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+
+:root {
+  --Black-color: #000;
+  --White_color: #ffffff;
+  --Port_Gore_color: #3a4574;
+  --Calico_color: #d3b47f;
+  --Ship_Cove_color: #717cac;
+  --Very_Ligh_Grey: #cccccc;
+  --Grey: #808080;
+}
+/*global*/
+.btn-reset {
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.container {
+  max-width: 580px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+/* header */
+.header__container {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+  padding-top: 20px;
+}
+
+.header__wrap {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 60%;
+  height: 100vh;
+  padding-left: 30px;
+  padding-top: 120px;
+  background-color: var(--White_color);
+
+  box-shadow: 0px 5px 40px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  visibility: hidden;
+  transform: translateX(-120%);
+  transition: visibility 0.3s ease-in-out, transform 0.3s ease-in-out;
+  z-index: 2;
+}
+.header__nav {
+  margin-bottom: 30px;
+}
+.nav__list {
+  align-items: flex-start;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 29px;
+}
+.header__wrap .nav__list {
+  flex-direction: column;
+}
+.header__nav .nav__item:not(:last-child) {
+  margin-right: 0;
+  margin-bottom: 30px;
+}
+
+.header__wrap--active {
+  visibility: visible;
+  transform: none;
+}
+.burger--active .burger__line:nth-child(2) {
+  opacity: 0;
+  outline: none;
+}
+.burger--active .burger__line:first-child {
+  left: 25%;
+  top: 50%;
+  transform: rotate(45deg);
+  transform-origin: center;
+  transition: transform 0.3s ease-in-out, top 0.3s ease-in-out,
+    left 0.3s ease-in-out;
+}
+.burger--active .burger__line:last-child {
+  left: 25%;
+  top: 50%;
+
+  transform: rotate(-45deg);
+
+  transform-origin: center;
+  transition: transform 0.3s ease-in-out, top 0.3s ease-in-out,
+    left 0.3s ease-in-out;
+}
+.burger__line {
+  transition: transform 0.3s ease-in-out, top 0.3s ease-in-out,
+    left 0.3s ease-in-out;
+}
+.stop-scroll {
+  overflow: hidden;
+}
+.burger {
+  position: relative;
+  width: 30px;
+  height: 38px;
+  margin-right: 20px;
+  transition: outline 0.3s ease-in-out;
+  visibility: visible;
+  z-index: 3;
+}
+.burger__line {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 3px;
+  background-color: var(--Black-color);
+  transition: background-color 0.3s ease-in-out, width 0.3s linear;
+}
+.burger__line:nth-child(1) {
+  top: 5px;
+}
+.burger__line:nth-child(2) {
+  top: 15px;
+}
+.burger__line:nth-child(3) {
+  top: 25px;
+}
+
+.burger:active {
+  outline: none;
+}
+.nav__link {
+  position: relative;
+}
+.nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--Calico_color);
+  opacity: 0;
+  transition: opacity 0.2s linear;
+}
+
+.nav__link:hover::after {
+  opacity: 1;
+  outline: none;
+}
+.header__tel {
+  display: inline-flex;
+  margin-bottom: 30px;
+  align-items: center;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--Black-color);
+}
+.header__tel--svg {
+  margin-right: 10px;
+}
+.social {
+  display: flex;
+  right: 0;
+  bottom: 40px;
+}
+.social__item {
+  cursor: pointer;
+}
+.social__item:not(:last-child) {
+  margin-right: 20px;
+}
+.social__link:hover circle {
+  fill: var(--Calico_color);
+}
+.header__logo {
+  justify-content: center;
+}
+
+/* hero */
+.hero {
+  margin-bottom: 50px;
+}
+.hero__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hero__descr {
+  position: relative;
+  max-width: 330px;
+  text-align: center;
+}
+.hero__text {
+  margin-bottom: 25px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--Black-color);
+}
+.hero__title {
+  margin-bottom: 40px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: var(--Black-color);
+}
+
+.btn {
+  padding: 15px 30px;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 24px;
+  color: var(--White_color);
+  background-color: var(--Port_Gore_color);
+  border: 1px solid var(--Port_Gore_color);
+  outline: none;
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+.btn:hover {
+  background-color: var(--Ship_Cove_color);
+  border-color: var(--Ship_Cove_color);
+}
+/* модальное окно */
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 99998;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.4s, visibility 0.4s;
+}
+
+.modal__box {
+  position: relative;
+  max-width: 300px;
+  padding: 25px;
+  z-index: 1;
+  margin: 30px 15px;
+  background-color: white;
+  box-shadow: 0px 0px 17px -7px rgba(34, 60, 80, 0.2);
+  transform: scale(0);
+  transition: transform 0.8s;
+}
+.modal__box-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: none;
+  background-color: transparent;
+  padding: 5px;
+  cursor: pointer;
+}
+.modal__box-close svg path {
+  transition: fill 0.4s;
+}
+
+.modal__box-close:hover svg path {
+  fill: var(--Calico_color);
+}
+
+.modal.open {
+  visibility: visible;
+  opacity: 1;
+}
+.modal.open .modal__box {
+  transform: scale(1);
+}
+
+.form {
+  width: min(100%, 200px);
+}
+.form__textarea {
+  width: 100%;
+  resize: none;
+  min-height: 50px;
+  margin-bottom: 20px;
+  padding: 8px 10px;
+  border: 1px solid var(--Very_Ligh_Grey);
+  background-color: inherit;
+  outline: none;
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+}
+.form__textarea::placeholder,
+.form__input::placeholder {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 16px;
+  color: var(--Grey);
+}
+.form__label {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 24px;
+  color: var(--Black-color);
+}
+.form__input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--Very_Ligh_Grey);
+  background-color: inherit;
+  outline: none;
+}
+/* about  */
+.about {
+  width: 100%;
+  background-color: #3a4574;
+}
+.about__descr {
+  position: relative;
+  height: 200px;
+  width: 100%;
+}
+.about__title {
+  padding-top: 20px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 24px;
+  color: var(--White_color);
+}
+.about__text {
+  width: 70%;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  color: var(--White_color);
+}
+.swiper {
+  width: 100%;
+}
+.swiper-wrapper {
+  height: 100%;
+  width: 100%;
+  box-sizing: content-box;
+}
+.swiper-slide {
+  width: 100%;
+  height: 250px;
+  flex-shrink: 0;
+}
+.swiper-slide-1 {
+  background-image: url("../img/'t\ Zeezotje-1.jpg");
+  background-size: cover;
+  width: 100%;
+}
+.swiper-slide-2 {
+  background-image: url("../img/'t\ Zeezotje-2.jpg");
+  background-size: cover;
+  width: 100%;
+}
+.swiper-slide-3 {
+  background-image: url("../img/'t\ Zeezotje-3.jpg");
+  background-size: cover;
+  width: 100%;
+}
+
+.about__wrap {
+  display: flex;
+  justify-content: space-between;
+} 
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  display: none;
+}
+.swiper-button{
+  width: 50px;
+  height: 50px;
+position: relative;
+right: 20px;
+}
+.swiper-button-prev {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+}
+
+.swiper-button-next {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 50%;
+}
+
+.swiper-button-prev:hover svg path,
+.swiper-button-next:hover svg path {
+  stroke: var(--Calico_color);
+}
